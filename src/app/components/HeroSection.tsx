@@ -17,13 +17,19 @@ export function HeroSection() {
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <h1 
           className="text-5xl md:text-7xl text-white mb-6 leading-tight"
-          style={{ fontFamily: 'Playfair Display, serif' }}
+          style={{ 
+            fontFamily: 'Playfair Display, serif',
+            textShadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
+          }}
         >
           Transformasi Minda<br />Melalui Pernafasan
         </h1>
         <p 
           className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto"
-          style={{ fontFamily: 'Inter, sans-serif' }}
+          style={{ 
+            fontFamily: 'Inter, sans-serif',
+            textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
+          }}
         >
           Tempat bertenang di hutan Malaysia untuk kesihatan korporat dan pembangunan insan
         </p>
@@ -37,8 +43,11 @@ export function HeroSection() {
             Lihat Program
           </button>
           <button 
-            className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full hover:bg-white hover:text-[#2E5D4B] transition-all shadow-lg flex items-center gap-2"
-            style={{ fontFamily: 'Inter, sans-serif' }}
+            className="px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/60 text-white rounded-full hover:bg-white/20 hover:border-white transition-all shadow-lg flex items-center gap-2"
+            style={{ 
+              fontFamily: 'Inter, sans-serif',
+              backdropFilter: 'blur(10px)',
+            }}
           >
             <MapPin className="w-5 h-5" />
             Jelajah Kampus Maya

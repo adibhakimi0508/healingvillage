@@ -10,10 +10,10 @@ interface ProgramCardProps {
 function ProgramCard({ icon, title, description, color }: ProgramCardProps) {
   return (
     <div 
-      className="bg-white rounded-[20px] p-8 shadow-md hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
+      className="bg-white rounded-[20px] p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2"
     >
       <div 
-        className="w-20 h-20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+        className="w-20 h-20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md"
         style={{ backgroundColor: color }}
       >
         {icon}
@@ -36,24 +36,24 @@ function ProgramCard({ icon, title, description, color }: ProgramCardProps) {
 
 export function ProgramHighlights() {
   return (
-    <section className="py-24 bg-white" id="programs">
+    <section className="py-32 bg-white" id="programs">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <h2 
-            className="text-4xl md:text-5xl text-[#2E5D4B] mb-4"
+            className="text-4xl md:text-5xl text-[#2E5D4B] mb-6"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Program Utama Kami
           </h2>
           <p 
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
             Pendekatan holistik untuk kesihatan mental dan fizikal
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <ProgramCard
             icon={<Wind className="w-12 h-12 text-white" />}
             title="Teknik Pernafasan"

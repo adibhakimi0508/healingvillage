@@ -1,2 +1,11 @@
-# healingvillage
-Healing Village by KT Academy Website
+
+  # High-Fidelity Landing Page Design
+
+  This is a code bundle for High-Fidelity Landing Page Design. The original project is available at https://www.figma.com/design/1DzQz2aUShVObp5fLbXYbv/High-Fidelity-Landing-Page-Design.
+
+  ## Running the code
+
+  Run `npm i` to install the dependencies.
+
+  Run `npm run dev` to start the development server.
+  

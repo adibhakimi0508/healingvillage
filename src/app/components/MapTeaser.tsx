@@ -1,4 +1,5 @@
 import { Play } from 'lucide-react';
+import './custom-animations.css';
 
 export function MapTeaser() {
   return (
@@ -32,9 +33,9 @@ export function MapTeaser() {
             </p>
           </div>
 
-          {/* Right Glassmorphism Card */}
+          {/* Right Glassmorphism Card - Floating Window */}
           <div 
-            className="w-full lg:w-96 bg-white/10 backdrop-blur-md rounded-[20px] p-8 border border-white/20 shadow-2xl"
+            className="w-full lg:w-96 bg-white/10 backdrop-blur-md rounded-[20px] p-8 border border-white/20 shadow-2xl hover:shadow-[0_25px_70px_rgba(212,175,55,0.4)] transition-all duration-500 hover:-translate-y-2"
             style={{ 
               background: 'rgba(255, 255, 255, 0.15)',
               backdropFilter: 'blur(12px)',
@@ -56,12 +57,18 @@ export function MapTeaser() {
               >
                 Rasai pengalaman kampus kami melalui lawatan maya interaktif
               </p>
-              <button 
-                className="w-full px-6 py-4 bg-white text-[#2E5D4B] rounded-full hover:bg-[#D4AF37] hover:text-white transition-all shadow-lg"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Mulakan Tour Maya
-              </button>
+              {/* Button with Pulse Animation */}
+              <div className="relative inline-block w-full">
+                {/* Pulse rings */}
+                <div className="absolute inset-0 rounded-full bg-[#D4AF37] pulse-button-ring-1"></div>
+                <div className="absolute inset-0 rounded-full bg-[#D4AF37] pulse-button-ring-2"></div>
+                <button 
+                  className="relative w-full px-6 py-4 bg-white text-[#2E5D4B] rounded-full hover:bg-[#D4AF37] hover:text-white transition-all shadow-lg"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Mulakan Tour Maya
+                </button>
+              </div>
             </div>
           </div>
         </div>
