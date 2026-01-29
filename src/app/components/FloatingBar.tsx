@@ -20,10 +20,11 @@ export function FloatingBar() {
     <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 flex flex-col gap-4">
       {/* WhatsApp */}
       <a
-        href="https://wa.me/60123456789"
+        href="https://api.whatsapp.com/send?phone=60194090982&text=HealingVillage"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+        className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 group active:scale-95"
+        style={{ boxShadow: '0 4px 20px rgba(37, 211, 102, 0.3)' }}
         aria-label="WhatsApp"
       >
         <MessageCircle className="w-7 h-7 text-white" />
@@ -31,10 +32,11 @@ export function FloatingBar() {
 
       {/* Instagram */}
       <a
-        href="https://instagram.com/healingvillage"
+        href="https://instagram.com/healingvillage.my"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+        className="w-14 h-14 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737] rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 group active:scale-95"
+        style={{ boxShadow: '0 4px 20px rgba(253, 29, 29, 0.3)' }}
         aria-label="Instagram"
       >
         <Instagram className="w-7 h-7 text-white" />
@@ -42,11 +44,12 @@ export function FloatingBar() {
 
       {/* TikTok */}
       <a
-        href="https://tiktok.com/@healingvillage"
+        href="https://tiktok.com/@healingvillage.my"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 bg-black rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
-        aria-label="TikTok"
+        className="w-14 h-14 bg-black rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 group active:scale-95"
+        style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)' }}
+        aria-label="Share on TikTok"
       >
         <TikTokIcon />
       </a>

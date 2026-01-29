@@ -17,7 +17,7 @@ export function Footer() {
               className="text-white/80 mb-4"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              Tempat bertenang untuk transformasi minda dan kesihatan holistik di Malaysia.
+              Tempat transformasi minda dan kesihatan holistik di Malaysia.
             </p>
           </div>
 
@@ -49,16 +49,16 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <p className="text-white/80">
-                  Hulu Langat, Selangor<br />Malaysia
+                  2, Jalan Pudina 24/39A, Seksyen 24, 40300, Shah Alam, Selangor<br />Malaysia
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <p className="text-white/80">+60 12-345 6789</p>
+                <p className="text-white/80">+60 19-409 0982</p>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <p className="text-white/80">info@healingvillage.my</p>
+                <p className="text-white/80">healingvillage.bdm@gmail.com</p>
               </div>
             </div>
           </div>

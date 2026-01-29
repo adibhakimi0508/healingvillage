@@ -1,83 +1,114 @@
-import { Wind, Brain, Leaf, Heart } from 'lucide-react';
-
-interface ProgramCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  color: string;
-}
-
-function ProgramCard({ icon, title, description, color }: ProgramCardProps) {
-  return (
-    <div 
-      className="bg-white rounded-[20px] p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2"
-    >
-      <div 
-        className="w-20 h-20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md"
-        style={{ backgroundColor: color }}
-      >
-        {icon}
-      </div>
-      <h3 
-        className="text-2xl text-[#2E5D4B] mb-3"
-        style={{ fontFamily: 'Playfair Display, serif' }}
-      >
-        {title}
-      </h3>
-      <p 
-        className="text-gray-600 leading-relaxed"
-        style={{ fontFamily: 'Inter, sans-serif' }}
-      >
-        {description}
-      </p>
-    </div>
-  );
-}
+import { Wind, Brain, Heart, Leaf } from 'lucide-react';
 
 export function ProgramHighlights() {
+  const programs = [
+    {
+      icon: Wind,
+      title: 'Breathwork Science',
+      description: 'Teknik pernafasan berasaskan sains untuk kesejahteraan mental',
+      color: '#2E5D4B'
+    },
+    {
+      icon: Brain,
+      title: 'Leadership Resilience',
+      description: 'Program khas untuk pemimpin korporat dan eksekutif',
+      color: '#D4AF37'
+    },
+    {
+      icon: Heart,
+      title: 'Caregiver Support',
+      description: 'Sokongan kesejahteraan untuk penjaga dan ibu bapa',
+      color: '#5A8F7B'
+    },
+    {
+      icon: Leaf,
+      title: 'ESG Integration',
+      description: 'Menyelaraskan kesejahteraan dengan matlamat kelestarian',
+      color: '#2E5D4B'
+    }
+  ];
+
   return (
-    <section className="py-32 bg-white" id="programs">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-20">
+    <section className="py-24 px-6 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
           <h2 
-            className="text-4xl md:text-5xl text-[#2E5D4B] mb-6"
+            className="text-4xl md:text-5xl text-[#2E5D4B] mb-4"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
-            Program Utama Kami
+            Program Utama
           </h2>
           <p 
-            className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            className="text-gray-600 text-lg"
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
-            Pendekatan holistik untuk kesihatan mental dan fizikal
+            Solusi kesejahteraan yang disesuaikan untuk pelbagai keperluan
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <ProgramCard
-            icon={<Wind className="w-12 h-12 text-white" />}
-            title="Teknik Pernafasan"
-            description="Kaedah pernafasan terapeutik untuk mengurangkan stress dan meningkatkan kesedaran diri"
-            color="#5A8F7B"
-          />
-          <ProgramCard
-            icon={<Brain className="w-12 h-12 text-white" />}
-            title="Transformasi Minda"
-            description="Program pembangunan mental untuk pemikiran positif dan kesihatan emosi yang seimbang"
-            color="#2E5D4B"
-          />
-          <ProgramCard
-            icon={<Leaf className="w-12 h-12 text-white" />}
-            title="Terapi Alam"
-            description="Penyembuhan melalui hubungan dengan alam semula jadi di persekitaran hutan"
-            color="#D4AF37"
-          />
-          <ProgramCard
-            icon={<Heart className="w-12 h-12 text-white" />}
-            title="Wellness Korporat"
-            description="Program khas untuk organisasi yang mengutamakan kesejahteraan pekerja"
-            color="#5A8F7B"
-          />
+        {/* 2x2 Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {programs.map((program, index) => {
+            const Icon = program.icon;
+            return (
+              <div 
+                key={index}
+                className="relative group cursor-pointer p-10 flex flex-col items-center text-center"
+                style={{
+                  borderRadius: '20px',
+                  background: 'linear-gradient(135deg, #F4F7F6 0%, #ffffff 100%)',
+                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.06)',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.boxShadow = '0 16px 45px rgba(0, 0, 0, 0.12)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.06)';
+                }}
+              >
+                {/* Large Icon */}
+                <div 
+                  className="w-24 h-24 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+                  style={{ 
+                    backgroundColor: `${program.color}15`,
+                    boxShadow: `0 8px 30px ${program.color}30`
+                  }}
+                >
+                  <Icon className="w-12 h-12" style={{ color: program.color }} />
+                </div>
+
+                <h3 
+                  className="text-2xl font-bold text-[#2E5D4B] mb-4"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
+                >
+                  {program.title}
+                </h3>
+                
+                <p 
+                  className="text-gray-600 leading-relaxed"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  {program.description}
+                </p>
+
+                {/* Learn More Link */}
+                <div className="mt-6">
+                  <span 
+                    className="text-sm font-semibold group-hover:text-[#2E5D4B] transition-colors duration-300"
+                    style={{ 
+                      fontFamily: 'Inter, sans-serif',
+                      color: program.color
+                    }}
+                  >
+                    Ketahui Lebih Lanjut →
+                  </span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
