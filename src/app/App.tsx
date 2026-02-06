@@ -10,43 +10,22 @@ import { FooterCTA } from '@/app/components/FooterCTA';
 import { FloatingBar } from '@/app/components/FloatingBar';
 import { Footer } from '@/app/components/Footer';
 import { ContactPage } from '@/app/pages/ContactPage';
+import { ProgramListPage } from '@/app/pages/ProgramListPage';
+
+// 👇 IMPORT THE NEW COMPONENT
+import ScrollToTop from '@/app/components/ScrollToTop';
 
 function HomePage() {
     return (
         <div className="min-h-screen bg-white">
             <Navigation />
             <main>
-                {/* 1. Hero Section */}
-                <div id="home">
-                    <HeroSection />
-                </div>
-
-                {/* 2. Leadership */}
-                <div id="leadership">
-                    <LeadershipBento />
-                </div>
-
-                {/* 3. Map Teaser */}
-                <div id="campus">
-                    <MapTeaser />
-                </div>
-
-                {/* 4. Bulletin - ADDED ID HERE */}
-                <div id="bulletin">
-                    <CommunityBulletin />
-                </div>
-
-                {/* 5. Program Highlights */}
-                <div id="programs">
-                    <ProgramHighlights />
-                </div>
-
-                {/* 6. Gallery - ADDED ID HERE */}
-                <div id="gallery">
-                    <MomentsGallery />
-                </div>
-
-                {/* 7. Footer CTA */}
+                <div id="home"><HeroSection /></div>
+                <div id="leadership"><LeadershipBento /></div>
+                <div id="campus"><MapTeaser /></div>
+                <div id="bulletin"><CommunityBulletin /></div>
+                <div id="programs"><ProgramHighlights /></div>
+                <div id="gallery"><MomentsGallery /></div>
                 <FooterCTA />
             </main>
             <FloatingBar />
@@ -58,9 +37,13 @@ function HomePage() {
 export default function App() {
     return (
         <BrowserRouter>
+            {/* 👇 PLACE IT HERE (Inside Router, outside Routes) */}
+            <ScrollToTop />
+
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/hubungi-kami" element={<ContactPage />} />
+                <Route path="/senarai-program" element={<ProgramListPage />} />
             </Routes>
         </BrowserRouter>
     );

@@ -24,7 +24,6 @@ export function Footer() {
                 <li><a href="#home" className="text-white/80 hover:text-[#D4AF37] transition-colors">Laman Utama</a></li>
                 <li><a href="#leadership" className="text-white/80 hover:text-[#D4AF37] transition-colors">Kepimpinan</a></li>
                 <li><a href="#programs" className="text-white/80 hover:text-[#D4AF37] transition-colors">Program</a></li>
-                <li><a href="#campus" className="text-white/80 hover:text-[#D4AF37] transition-colors">Kampus</a></li>
               </ul>
             </div>
 
@@ -40,13 +39,17 @@ export function Footer() {
                     2, Jalan Pudina 24/39A, Seksyen 24, 40300, Shah Alam, Selangor<br />Malaysia
                   </p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 flex-shrink-0" />
-                  <p className="text-white/80">+60 19-409 0982</p>
+                <div className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-white/80">+60 16-426 3233 (Zaim)</p>
+                    <p className="text-white/80">+60 16-323 3401 (Hanif)</p>
+                    <p className="text-white/80">+60 19-409 0982 (Azman)</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 flex-shrink-0" />
-                  <p className="text-white/80">healingvillage.bdm@gmail.com</p>
+                  <p className="text-white/80">training@ktacademy.my</p>
                 </div>
               </div>
             </div>

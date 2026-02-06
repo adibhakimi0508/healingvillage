@@ -1,33 +1,35 @@
 import { Wind, Brain, Heart, Leaf } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+// DATA
+const programs = [
+  {
+    icon: Wind,
+    title: 'Breathwork Science',
+    description: 'Teknik pernafasan berasaskan sains untuk kesejahteraan mental',
+    color: '#0EA5E9'
+  },
+  {
+    icon: Brain,
+    title: 'Leadership Resilience',
+    description: 'Program khas untuk pemimpin korporat dan eksekutif',
+    color: '#D4AF37'
+  },
+  {
+    icon: Heart,
+    title: 'Caregiver Support',
+    description: 'Sokongan kesejahteraan untuk penjaga dan ibu bapa',
+    color: '#38BDF8'
+  },
+  {
+    icon: Leaf,
+    title: 'ESG Integration',
+    description: 'Menyelaraskan kesejahteraan dengan matlamat kelestarian',
+    color: '#0284C7'
+  }
+];
 
 export function ProgramHighlights() {
-  const programs = [
-    {
-      icon: Wind,
-      title: 'Breathwork Science',
-      description: 'Teknik pernafasan berasaskan sains untuk kesejahteraan mental',
-      color: '#0EA5E9' // Primary Blue
-    },
-    {
-      icon: Brain,
-      title: 'Leadership Resilience',
-      description: 'Program khas untuk pemimpin korporat dan eksekutif',
-      color: '#D4AF37' // Gold
-    },
-    {
-      icon: Heart,
-      title: 'Caregiver Support',
-      description: 'Sokongan kesejahteraan untuk penjaga dan ibu bapa',
-      color: '#38BDF8' // Sky Blue
-    },
-    {
-      icon: Leaf,
-      title: 'ESG Integration',
-      description: 'Menyelaraskan kesejahteraan dengan matlamat kelestarian',
-      color: '#0284C7' // Darker Blue
-    }
-  ];
-
   return (
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -48,8 +50,10 @@ export function ProgramHighlights() {
             {programs.map((program, index) => {
               const Icon = program.icon;
               return (
-                  <div
+                  <Link
+                      to="/senarai-program"
                       key={index}
+                      // 👇 FIXED: Removed 'block'. Kept 'flex' so the layout works.
                       className="relative group cursor-pointer p-10 flex flex-col items-center text-center"
                       style={{
                         borderRadius: '20px',
@@ -96,7 +100,7 @@ export function ProgramHighlights() {
                     Ketahui Lebih Lanjut →
                   </span>
                     </div>
-                  </div>
+                  </Link>
               );
             })}
           </div>

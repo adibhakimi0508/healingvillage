@@ -1,9 +1,17 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { Download } from 'lucide-react'; // Added download icon for clarity
+
+// IMAGES
 import founderImage from '../../assets/a58919ca68238c9a420aa92032162422ef3ebd10.png';
 import personInChargeImage from '../../assets/b5a4bef424ccfb116f269b5a291698a76d768929.png';
 import drSharmadasImage from '../../assets/0b8d921b3a3a0b6cc33f35e3014a9432c0d69477.png';
 import drKuanImage from '../../assets/ce1f596dfd5fdc5f1972c049de983a095a9000ee.png';
 import ahmedZazleyImage from '../../assets/5a71fe087ec79bebed51994fd0a5827d722a0a6b.png';
+
+// 👇 PDF IMPORTS (Make sure your files are named exactly like this in src/assets/)
+import drSharmadasCV from '../../assets/drSharmadasCV.pdf';
+import drKuanCV from '../../assets/drKuanCV.pdf';
+import ahmedZazleyCV from '../../assets/ahmedZazleyCV.pdf';
 
 export function LeadershipBento() {
   return (
@@ -120,11 +128,15 @@ export function LeadershipBento() {
               </div>
             </div>
 
-            {/* Level 3: TEACHING STAFF */}
+            {/* Level 3: TEACHING STAFF (With PDF Downloads) */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1000px] mx-auto">
 
               {/* Dr. Sharmadas Senasi */}
-              <div className="relative overflow-hidden group cursor-pointer w-full h-[380px] rounded-[20px] shadow-[0_8px_30px_rgba(14,165,233,0.1)]">
+              <a
+                  href={drSharmadasCV}
+                  download="Dr_Sharmadas_CV.pdf"
+                  className="relative overflow-hidden group cursor-pointer w-full h-[380px] rounded-[20px] shadow-[0_8px_30px_rgba(14,165,233,0.1)] block hover:ring-4 hover:ring-[#0EA5E9]/30 transition-all duration-300"
+              >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#38BDF8] to-[#0EA5E9]">
                   <ImageWithFallback
                       src={drSharmadasImage}
@@ -132,6 +144,13 @@ export function LeadershipBento() {
                       className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+                {/* Overlay for Download Hint */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                  <div className="bg-white/20 backdrop-blur-md p-3 rounded-full">
+                    <Download className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
                 <span className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0284C7] text-xs font-bold mb-2 shadow-lg tracking-widest">
@@ -144,10 +163,14 @@ export function LeadershipBento() {
                     Membimbing transformasi kesejahteraan melalui kaedah pernafasan berasaskan saintifik.
                   </p>
                 </div>
-              </div>
+              </a>
 
               {/* Dr. Kuan Chi Meng */}
-              <div className="relative overflow-hidden group cursor-pointer w-full h-[380px] rounded-[20px] shadow-[0_8px_30px_rgba(14,165,233,0.1)]">
+              <a
+                  href={drKuanCV}
+                  download="Dr_Kuan_CV.pdf"
+                  className="relative overflow-hidden group cursor-pointer w-full h-[380px] rounded-[20px] shadow-[0_8px_30px_rgba(14,165,233,0.1)] block hover:ring-4 hover:ring-[#0EA5E9]/30 transition-all duration-300"
+              >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#38BDF8] to-[#0EA5E9]">
                   <ImageWithFallback
                       src={drKuanImage}
@@ -155,6 +178,13 @@ export function LeadershipBento() {
                       className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+                {/* Overlay for Download Hint */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                  <div className="bg-white/20 backdrop-blur-md p-3 rounded-full">
+                    <Download className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
                 <span className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0284C7] text-xs font-bold mb-2 shadow-lg tracking-widest">
@@ -167,10 +197,14 @@ export function LeadershipBento() {
                     Mengintegrasikan kesihatan mental holistik dengan pendekatan tradisional dan moden.
                   </p>
                 </div>
-              </div>
+              </a>
 
               {/* Ahmed Zazley */}
-              <div className="relative overflow-hidden group cursor-pointer w-full h-[380px] rounded-[20px] shadow-[0_8px_30px_rgba(14,165,233,0.1)]">
+              <a
+                  href={ahmedZazleyCV}
+                  download="Ahmed_Zazley_CV.pdf"
+                  className="relative overflow-hidden group cursor-pointer w-full h-[380px] rounded-[20px] shadow-[0_8px_30px_rgba(14,165,233,0.1)] block hover:ring-4 hover:ring-[#0EA5E9]/30 transition-all duration-300"
+              >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#38BDF8] to-[#0EA5E9]">
                   <ImageWithFallback
                       src={ahmedZazleyImage}
@@ -178,6 +212,13 @@ export function LeadershipBento() {
                       className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+                {/* Overlay for Download Hint */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                  <div className="bg-white/20 backdrop-blur-md p-3 rounded-full">
+                    <Download className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
                 <span className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0284C7] text-xs font-bold mb-2 shadow-lg tracking-widest">
@@ -190,7 +231,7 @@ export function LeadershipBento() {
                     Memfasilitasi program kesejahteraan korporat untuk produktiviti dan keseimbangan kerja.
                   </p>
                 </div>
-              </div>
+              </a>
 
             </div>
           </div>

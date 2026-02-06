@@ -1,78 +1,234 @@
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { MapPin } from 'lucide-react';
+import { MapPin, Globe, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// 👇 IMPORT THE LOCAL IMAGE
+// 👇 IMPORT LOCAL IMAGES
 import heroBg from '../../assets/hero-bg.webp';
+import ktAcademyBg from '../../assets/1.jpeg';
+import klassiqueTouchBg from '../../assets/ballroom2e.png';
+
+// ✅ DATA MOVED OUTSIDE COMPONENT (Fixes "Unstable Dependency" Warning)
+const slides = [
+    {
+        id: 1,
+        image: heroBg,
+        title: (
+            <>
+                Transformasi Minda<br />Melalui Pernafasan
+            </>
+        ),
+        description: "Pusat kecemerlangan minda dan kesihatan holistik.",
+        primaryButton: {
+            text: "Lihat Program",
+            action: () => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })
+        },
+        secondaryButton: {
+            text: "Jelajah Peta Maya",
+            link: "https://interactivemap.healingvillage.com.my",
+            icon: MapPin
+        }
+    },
+    {
+        id: 2,
+        image: ktAcademyBg,
+        title: (
+            <>
+                KT Academy<br />Professional Training
+            </>
+        ),
+        description: "Latihan profesional dan pembangunan modal insan yang komprehensif.",
+        primaryButton: {
+            text: "Layari Website",
+            link: "https://ktacademy.my",
+            icon: Globe
+        },
+        secondaryButton: null
+    },
+    {
+        id: 3,
+        image: klassiqueTouchBg,
+        title: (
+            <>
+                Klassique Touch<br />Event Management
+            </>
+        ),
+        description: "Pengurusan acara korporat dan majlis eksklusif bertaraf dunia.",
+        primaryButton: {
+            text: "Layari Website",
+            link: "https://klassiquetouch.com.my",
+            icon: Globe
+        },
+        secondaryButton: null
+    }
+];
 
 export function HeroSection() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    // SWIPE STATE
+    const touchStartX = useRef(0);
+    const touchEndX = useRef(0);
+
+    // LOGIC: Next Slide
+    const nextSlide = useCallback(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, []);
+
+    // LOGIC: Prev Slide
+    const prevSlide = useCallback(() => {
+        setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    }, []);
+
+    // SWIPE HANDLERS
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.targetTouches[0].clientX;
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.targetTouches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+        if (!touchStartX.current || !touchEndX.current) return;
+
+        const distance = touchStartX.current - touchEndX.current;
+        const isLeftSwipe = distance > 50;
+        const isRightSwipe = distance < -50;
+
+        if (isLeftSwipe) {
+            nextSlide();
+        } else if (isRightSwipe) {
+            prevSlide();
+        }
+
+        // Reset
+        touchStartX.current = 0;
+        touchEndX.current = 0;
+    };
+
+    // AUTOSLIDE TIMER
+    useEffect(() => {
+        const slideInterval = setInterval(nextSlide, 5000);
+        return () => clearInterval(slideInterval);
+    }, [nextSlide]); // ✅ Dependency is now stable
+
     return (
-        <section className="relative h-screen w-full overflow-hidden">
-            {/* Background Image - USING LOCAL FILE */}
-            <div className="absolute inset-0">
-                <ImageWithFallback
-                    src={heroBg} // ✅ Pointing to the variable above
-                    alt="Green grass field under blue sky"
-                    className="w-full h-full object-cover"
-                />
+        <section
+            className="relative h-screen w-full overflow-hidden bg-black group select-none" // 👈 Added select-none
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+        >
 
-                {/* Gradient Overlay */}
-                {/* Kept the slight blue tint to match your new theme */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-[#0EA5E9]/10 to-black/60"></div>
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center">
-                <h1
-                    className="text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-tight max-w-5xl"
-                    style={{
-                        fontFamily: 'Playfair Display, serif',
-                        textShadow: '0 4px 30px rgba(0, 0, 0, 0.5)'
-                    }}
+            {/* SLIDES RENDERER */}
+            {slides.map((slide, index) => (
+                <div
+                    key={slide.id}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
                 >
-                    Transformasi Minda<br />Melalui Pernafasan
-                </h1>
+                    {/* Background Image */}
+                    <div className="absolute inset-0 pointer-events-none"> {/* Prevent image dragging */}
+                        <ImageWithFallback
+                            src={slide.image}
+                            alt="Hero Background"
+                            className="w-full h-full object-cover scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#0EA5E9]/20 to-black/70"></div>
+                    </div>
 
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                    {/* Primary Button - Light Blue Theme */}
+                    {/* Text Content */}
+                    <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 text-center">
+                        <h1
+                            className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight max-w-5xl animate-in fade-in slide-in-from-bottom-8 duration-1000"
+                            style={{
+                                fontFamily: 'Playfair Display, serif',
+                                textShadow: '0 4px 30px rgba(0, 0, 0, 0.5)'
+                            }}
+                        >
+                            {slide.title}
+                        </h1>
+
+                        <p className="text-white/90 text-xl md:text-2xl mb-10 max-w-2xl font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            {slide.description}
+                        </p>
+
+                        {/* Buttons Container */}
+                        <div className="flex flex-col sm:flex-row gap-4 pointer-events-auto"> {/* Re-enable clicks for buttons */}
+                            {slide.primaryButton.action ? (
+                                <button
+                                    onClick={slide.primaryButton.action}
+                                    className="px-8 py-4 bg-[#0EA5E9] text-white rounded-full hover:bg-[#0284C7] transition-all duration-300 text-lg font-semibold flex items-center justify-center gap-2"
+                                    style={{ boxShadow: '0 6px 24px rgba(14, 165, 233, 0.4)' }}
+                                >
+                                    {slide.primaryButton.text}
+                                </button>
+                            ) : (
+                                <a
+                                    href={slide.primaryButton.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-8 py-4 bg-[#0EA5E9] text-white rounded-full hover:bg-[#0284C7] transition-all duration-300 text-lg font-semibold flex items-center justify-center gap-2"
+                                    style={{ boxShadow: '0 6px 24px rgba(14, 165, 233, 0.4)' }}
+                                >
+                                    {slide.primaryButton.icon && <slide.primaryButton.icon className="w-5 h-5" />}
+                                    {slide.primaryButton.text}
+                                    <ArrowRight className="w-5 h-5" />
+                                </a>
+                            )}
+
+                            {slide.secondaryButton && (
+                                <a
+                                    href={slide.secondaryButton.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-8 py-4 rounded-full text-white text-lg font-semibold flex items-center justify-center gap-2 hover:bg-white/20 active:bg-white/30 transition-all duration-300"
+                                    style={{
+                                        background: 'rgba(255, 255, 255, 0.1)',
+                                        backdropFilter: 'blur(10px)',
+                                        border: '2px solid rgba(255, 255, 255, 0.3)',
+                                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+                                    }}
+                                >
+                                    {slide.secondaryButton.icon && <slide.secondaryButton.icon className="w-5 h-5" />}
+                                    {slide.secondaryButton.text}
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+
+            {/* Navigation Arrows */}
+            <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all duration-300 hover:scale-110 pointer-events-auto"
+                aria-label="Previous Slide"
+            >
+                <ChevronLeft className="w-8 h-8" />
+            </button>
+
+            <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all duration-300 hover:scale-110 pointer-events-auto"
+                aria-label="Next Slide"
+            >
+                <ChevronRight className="w-8 h-8" />
+            </button>
+
+            {/* Navigation Dots */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3 pointer-events-auto">
+                {slides.map((_, index) => (
                     <button
-                        className="px-8 py-4 bg-[#0EA5E9] text-white rounded-full hover:bg-[#0284C7] active:bg-[#0369A1] transition-all duration-300 text-lg font-semibold"
-                        style={{
-                            fontFamily: 'Inter, sans-serif',
-                            boxShadow: '0 6px 24px rgba(14, 165, 233, 0.4)'
-                        }}
-                    >
-                        Lihat Program
-                    </button>
-
-                    {/* Glass Button */}
-                    <a
-                        href="https://interactivemap.healingvillage.com.my"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-8 py-4 rounded-full text-white text-lg font-semibold flex items-center gap-2 hover:bg-white/20 active:bg-white/30 transition-all duration-300"
-                        style={{
-                            fontFamily: 'Inter, sans-serif',
-                            background: 'rgba(255, 255, 255, 0.1)',
-                            backdropFilter: 'blur(10px)',
-                            border: '2px solid rgba(255, 255, 255, 0.3)',
-                            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
-                        }}
-                    >
-                        <MapPin className="w-5 h-5" />
-                        Jelajah Peta Maya
-                    </a>
-                </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-                <div className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2">
-                    <div
-                        className="w-1.5 h-3 bg-white rounded-full animate-bounce"
-                        style={{ animationDuration: '2s' }}
-                    ></div>
-                </div>
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`h-3 rounded-full transition-all duration-300 ${
+                            index === currentSlide ? 'w-10 bg-[#0EA5E9]' : 'w-3 bg-white/50 hover:bg-white'
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
             </div>
         </section>
     );

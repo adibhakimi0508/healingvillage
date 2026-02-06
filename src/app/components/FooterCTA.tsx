@@ -25,26 +25,31 @@ export function FooterCTA() {
           </p>
 
           {/* CTA Button */}
-          <button
-              className="px-12 py-5 bg-[#D4AF37] text-white rounded-full hover:bg-[#c19d2f] active:bg-[#b08e28] transition-all duration-300 text-xl font-semibold inline-flex items-center gap-3 mb-12"
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                boxShadow: '0 8px 30px rgba(212, 175, 55, 0.5)'
-              }}
-          >
-            <Mail className="w-6 h-6" />
-            Hubungi Kami
-          </button>
+            <a
+                href="mailto:training@ktacademy.my"
+                className="px-12 py-5 bg-[#D4AF37] text-white rounded-full hover:bg-[#c19d2f] active:bg-[#b08e28] transition-all duration-300 text-xl font-semibold inline-flex items-center gap-3 mb-12"
+                style={{
+                    fontFamily: 'Inter, sans-serif',
+                    boxShadow: '0 8px 30px rgba(212, 175, 55, 0.5)'
+                }}
+            >
+                <Mail className="w-6 h-6" />
+                Hubungi Kami
+            </a>
 
           {/* Contact Info */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 pt-8 border-t border-white/20">
-            <div className="flex items-center gap-3 text-white/80">
-              <Phone className="w-5 h-5" />
-              <span style={{ fontFamily: 'Inter, sans-serif' }}>+60 19-409 0982</span>
-            </div>
+              <div className="flex items-start gap-3 text-white/80 text-left">
+                  <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
+                  <div className="flex flex-col gap-1" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      <span>+60 16-426 3233 (Zaim)</span>
+                      <span>+60 16-323 3401 (Hanif)</span>
+                      <span>+60 19-409 0982 (Azman)</span>
+                  </div>
+              </div>
             <div className="flex items-center gap-3 text-white/80">
               <Mail className="w-5 h-5" />
-              <span style={{ fontFamily: 'Inter, sans-serif' }}>healingvillage.bdm@gmail.com</span>
+              <span style={{ fontFamily: 'Inter, sans-serif' }}>training@ktacademy.my</span>
             </div>
             <div className="flex items-center gap-3 text-white/80">
               <MapPin className="w-5 h-5" />
