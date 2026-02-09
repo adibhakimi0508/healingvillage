@@ -1,4 +1,5 @@
 import { MapPin, Navigation as NavigationIcon } from 'lucide-react';
+import mapTeaserBg from '../../assets/mapteaser.jpg';
 
 export function MapTeaser() {
     return (
@@ -7,13 +8,13 @@ export function MapTeaser() {
             <div
                 className="absolute inset-0"
                 style={{
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1767452985369-d24b2b4cb0cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWxsbmVzcyUyMHJldHJlYXQlMjB5b2dhJTIwbmF0dXJlfGVufDF8fHx8MTc2OTQxNTQ0N3ww&ixlib=rb-4.1.0&q=80&w=1080)',
+                    backgroundImage: `url(${mapTeaserBg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundAttachment: 'fixed'
                 }}
             >
-                {/* UPDATED: Blue Overlay */}
+                {/* Blue Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0284C7]/80 to-[#0EA5E9]/60"></div>
             </div>
 
@@ -50,7 +51,7 @@ export function MapTeaser() {
                         Terokai fasiliti kami melalui tour maya 360° yang interaktif
                     </p>
 
-                    {/* CTA Button */}
+                    {/* CTA Button - REVERTED TO GOLD */}
                     <a
                         href="https://earth.google.com/web/search/KT+Ballroom+%e2%80%a2+KWE+Shah+Alam,+Jalan+Pudina+24%2f39A,+Section+24,+Shah+Alam,+Selangor/@3.03569355,101.52218034,11.67407669a,203.29649521d,35y,0h,0t,0r/data=CsQBGpUBEo4BCiUweDMxY2M1MmFhZDE0M2M4Njk6MHhiMTgzNTlhMzM5MTQ4MjdiGe5FD9fFSAhAIUbFSatrYVlAKlNLVCBCYWxscm9vbSDigKIgS1dFIFNoYWggQWxhbSwgSmFsYW4gUHVkaW5hIDI0LzM5QSwgU2VjdGlvbiAyNCwgU2hhaCBBbGFtLCBTZWxhbmdvchgCIAEiJgokCR_9530eOjRAER39530eOjTAGY0tTHkOP0lAIePWEwecn0nAQgIIAToDCgEwQgIIAEoNCP___________wEQAQ"
                         target="_blank"

@@ -7,25 +7,25 @@ const programs = [
     icon: Wind,
     title: 'Breathwork Science',
     description: 'Teknik pernafasan berasaskan sains untuk kesejahteraan mental',
-    color: '#0EA5E9'
+    color: '#0EA5E9' // Unified Color
   },
   {
     icon: Brain,
     title: 'Leadership Resilience',
     description: 'Program khas untuk pemimpin korporat dan eksekutif',
-    color: '#D4AF37'
+    color: '#0EA5E9' // Unified Color
   },
   {
     icon: Heart,
     title: 'Caregiver Support',
     description: 'Sokongan kesejahteraan untuk penjaga dan ibu bapa',
-    color: '#38BDF8'
+    color: '#0EA5E9' // Unified Color
   },
   {
     icon: Leaf,
     title: 'ESG Integration',
     description: 'Menyelaraskan kesejahteraan dengan matlamat kelestarian',
-    color: '#0284C7'
+    color: '#0EA5E9' // Unified Color
   }
 ];
 
@@ -53,7 +53,6 @@ export function ProgramHighlights() {
                   <Link
                       to="/senarai-program"
                       key={index}
-                      // 👇 FIXED: Removed 'block'. Kept 'flex' so the layout works.
                       className="relative group cursor-pointer p-10 flex flex-col items-center text-center"
                       style={{
                         borderRadius: '20px',

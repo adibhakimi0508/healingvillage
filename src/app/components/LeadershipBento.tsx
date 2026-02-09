@@ -45,7 +45,7 @@ export function LeadershipBento() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9] to-[#0284C7]">
                   <ImageWithFallback
                       src={founderImage}
-                      alt="Encik Zaim - Pengasas"
+                      alt="Is. Zaim Ridzuan - Pengasas"
                       className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -62,7 +62,7 @@ export function LeadershipBento() {
                       className="text-2xl font-bold text-white mb-2"
                       style={{ fontFamily: 'Playfair Display, serif' }}
                   >
-                    Encik Zaim
+                    Is. Zaim Ridzuan
                   </h3>
                   <p className="text-white/85 text-sm leading-snug">
                     Mewujudkan ekosistem kesejahteraan melalui sains pernafasan dan nilai tradisional.
@@ -106,7 +106,7 @@ export function LeadershipBento() {
                       className="text-2xl font-bold text-white mb-2"
                       style={{ fontFamily: 'Playfair Display, serif' }}
                   >
-                    Haji Azman
+                    Haji Ahmad Azman bin Ibrahim
                   </h3>
                   <p className="text-white/85 text-sm leading-snug">
                     Mengurus operasi strategik untuk kelestarian program kesejahteraan komuniti.
