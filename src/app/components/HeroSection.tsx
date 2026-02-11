@@ -4,7 +4,7 @@ import { MapPin, Globe, ArrowRight, ChevronLeft, ChevronRight, Hand } from 'luci
 
 // IMPORT LOCAL IMAGES
 import heroBg from '../../assets/hero-bg.webp';
-import ktAcademyBg from '../../assets/DSC09805.png';
+import ktAcademyBg from '../../assets/DSC09805.jpg';
 import klassiqueTouchBg from '../../assets/ballroom2e.jpg';
 
 // DATA
