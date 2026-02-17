@@ -1,495 +1,324 @@
-import { Baby, Users, Heart, Moon, Leaf, Building2, Microscope, User, UserCheck, Briefcase, TrendingUp, Shield, FileText } from 'lucide-react';
+import {
+  Users,
+  Baby,
+  User,
+  HeartHandshake,
+  Armchair,
+  Briefcase,
+  Leaf,
+  Scale,
+  BrainCircuit,
+  Activity,
+  AlertTriangle,
+  DollarSign,
+  Flower2,
+  ShieldCheck,
+  XCircle,
+  CheckCircle2
+} from 'lucide-react';
 
 export function WellnessInfographic() {
+
+  // --- DATA ---
+  const problemNodesLeft = [
+    {
+      title: "Kanak-kanak",
+      desc: "Kekurangan pendedahan awal kepada pengurusan emosi menyebabkan mudah cemas & tantrum.",
+      icon: Baby
+    },
+    {
+      title: "Remaja",
+      desc: "Tekanan akademik & media sosial mencipta krisis keyakinan diri.",
+      icon: User
+    },
+  ];
+
+  const problemNodesRight = [
+    {
+      title: "Ibu-ibu",
+      desc: "Beban berganda kerjaya & rumahtangga mengakibatkan keletihan mental (burnout).",
+      icon: HeartHandshake
+    },
+    {
+      title: "Warga Emas",
+      desc: "Kesunyian akibat isolasi sosial meningkatkan risiko kemurungan.",
+      icon: Armchair
+    },
+  ];
+
+  const corporateNode = {
+    title: "Sektor Korporat",
+    desc: "9/10 pekerja alami tekanan tinggi. Keletihan mental menjejaskan produktiviti.",
+    icon: Briefcase
+  };
+
+  const solutionNodesLeft = [
+    {
+      title: "Sains Pernafasan",
+      desc: "Teknik berasaskan data untuk mengoptimumkan oksigen & fokus kognitif.",
+      icon: Activity
+    },
+    {
+      title: "Mindfulness Somatik",
+      desc: "Latihan kesedaran tubuh untuk mengenali tanda awal stres.",
+      icon: User
+    },
+  ];
+
+  const solutionNodesRight = [
+    {
+      title: "Regulasi Emosi",
+      desc: "Strategi praktikal mengawal emosi di tempat kerja secara profesional.",
+      icon: BrainCircuit
+    },
+    {
+      title: "Elemen Holistik",
+      desc: "Pendekatan menyantuni nilai spiritual & budaya tempatan.",
+      icon: Flower2
+    },
+  ];
+
+  const esgNodes = [
+    {
+      letter: "E",
+      title: "Alam Sekitar",
+      desc: "Gaya hidup minimalis & tenaga 'hijau' tanpa jejak karbon.",
+      icon: Leaf,
+      color: "text-emerald-700",
+      bg: "bg-emerald-100",
+      border: "border-emerald-300"
+    },
+    {
+      letter: "S",
+      title: "Sosial",
+      desc: "Memperkasa golongan rentan & melatih fasilitator komuniti.",
+      icon: Users,
+      color: "text-blue-700",
+      bg: "bg-blue-100",
+      border: "border-blue-300"
+    },
+    {
+      letter: "G",
+      title: "Tadbir Urus",
+      desc: "Latihan telus diiktiraf HRDC dengan penjejakan ROI jelas.",
+      icon: Scale,
+      color: "text-purple-700",
+      bg: "bg-purple-100",
+      border: "border-purple-300"
+    },
+  ];
+
   return (
-    <section className="bg-white" id="infographic">
-      <div className="max-w-5xl mx-auto">
-        
-        {/* 1. HEADER */}
-        <div 
-          className="relative overflow-hidden py-20 px-8"
-          style={{
-            background: 'linear-gradient(135deg, #2E5D4B 0%, #1a3529 100%)',
-            backgroundImage: `
-              linear-gradient(135deg, #2E5D4B 0%, #1a3529 100%),
-              repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.02) 10px, rgba(255,255,255,.02) 20px)
-            `
-          }}
-        >
-          {/* Decorative leaf pattern overlay */}
-          <div className="absolute inset-0 opacity-5" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
-          }}></div>
-          
-          <div className="relative z-10 text-center">
-            <h1 
-              className="text-4xl md:text-6xl text-white mb-4 leading-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Transformasi Minda<br />Melalui Pernafasan
-            </h1>
-            <p 
-              className="text-xl md:text-2xl text-white/90"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              Solusi Kesejahteraan Korporat & ESG
-            </p>
-          </div>
-        </div>
+      <section className="py-24 px-6 bg-[#F8FDFF] overflow-hidden font-sans">
+        <div className="max-w-7xl mx-auto">
 
-        {/* 2. SECTION 1: THE CRISIS */}
-        <div className="py-20 px-8 bg-gradient-to-b from-[#F4F7F6] to-white">
-          <h2 
-            className="text-3xl md:text-4xl text-[#2E5D4B] text-center mb-12"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Realiti Kesihatan Mental Malaysia
-          </h2>
-
-          {/* Large 9/10 Typography */}
-          <div className="text-center mb-8">
-            <div 
-              className="text-8xl md:text-9xl font-bold mb-4"
-              style={{ 
-                fontFamily: 'Playfair Display, serif',
-                color: '#DC2626',
-                textShadow: '0 4px 20px rgba(220, 38, 38, 0.2)'
-              }}
-            >
-              9/10
-            </div>
-            <p 
-              className="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto leading-relaxed"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              Pekerja mengalami simptom tekanan di tempat kerja.
-            </p>
+          {/* MAIN TITLE */}
+          <div className="text-center mb-24">
+          <span className="text-[#0E6175] font-semibold tracking-wider uppercase text-sm mb-3 block font-sans">
+            Peta Minda Kesejahteraan
+          </span>
+            <h2 className="text-4xl md:text-5xl text-[#0E6175] font-serif font-medium mb-6">
+              Ekosistem <span className="italic">Healing Village</span>
+            </h2>
           </div>
 
-          {/* Demographics Icons Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            {/* Child */}
-            <div className="flex flex-col items-center text-center">
-              <div 
-                className="w-20 h-20 rounded-full bg-[#2E5D4B] flex items-center justify-center mb-4"
-                style={{ boxShadow: '0 4px 16px rgba(46, 93, 75, 0.2)' }}
-              >
-                <Baby className="w-10 h-10 text-white" />
+          {/* =========================================
+            MAP 1: THE PROBLEM WEB (HIERARCHY)
+           ========================================= */}
+          <div className="mb-40">
+
+            {/* 1. CONTEXT (TEXT BLOCK) */}
+            <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-50 text-red-600 rounded-full text-sm font-bold uppercase tracking-wide mb-4 border border-red-100">
+                <XCircle className="w-4 h-4" />
+                Punca Masalah
               </div>
-              <p 
-                className="text-sm font-semibold text-[#2E5D4B]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Cemas
+              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">
+                Realiti Semasa Rakyat Malaysia
+              </h3>
+              <p className="text-gray-600 leading-relaxed font-sans text-lg">
+                Rakyat Malaysia dari pelbagai lapisan umur sedang berhadapan dengan krisis kesejahteraan. Rajah di bawah memetakan bagaimana tekanan emosi saling berkait antara rumah dan tempat kerja, mencipta kitaran yang sukar diputuskan.
               </p>
             </div>
 
-            {/* Teen */}
-            <div className="flex flex-col items-center text-center">
-              <div 
-                className="w-20 h-20 rounded-full bg-[#2E5D4B] flex items-center justify-center mb-4"
-                style={{ boxShadow: '0 4px 16px rgba(46, 93, 75, 0.2)' }}
-              >
-                <User className="w-10 h-10 text-white" />
+            {/* 2. VISUAL DIAGRAM (PURE) */}
+            <div className="relative">
+              {/* Desktop Connector Lines */}
+              <div className="hidden lg:block absolute top-[60px] left-1/2 w-px h-16 bg-red-300 -translate-x-1/2 z-0" /> {/* Stem */}
+              <div className="hidden lg:block absolute top-[124px] left-[16%] right-[16%] h-px border-t-[3px] border-red-200 z-0 rounded-full" /> {/* Crossbar */}
+              <div className="hidden lg:block absolute top-[124px] left-[16%] w-px h-12 bg-red-300 z-0" /> {/* Left Drop */}
+              <div className="hidden lg:block absolute top-[124px] right-[16%] w-px h-12 bg-red-300 z-0" /> {/* Right Drop */}
+              <div className="hidden lg:block absolute top-[124px] left-1/2 w-px h-12 bg-red-300 z-0 -translate-x-1/2" /> {/* Middle Drop */}
+
+              {/* ROOT NODE (Visual Only) */}
+              <div className="flex justify-center mb-16 relative z-10">
+                <div className="w-32 h-32 rounded-full bg-white border-[6px] border-red-100 shadow-xl flex items-center justify-center z-10">
+                  <h4 className="text-xl font-serif font-bold text-red-600 text-center leading-none">
+                    Cabaran<br/>Utama
+                  </h4>
+                </div>
               </div>
-              <p 
-                className="text-sm font-semibold text-[#2E5D4B]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Tekanan
-              </p>
-            </div>
 
-            {/* Mother */}
-            <div className="flex flex-col items-center text-center">
-              <div 
-                className="w-20 h-20 rounded-full bg-[#2E5D4B] flex items-center justify-center mb-4"
-                style={{ boxShadow: '0 4px 16px rgba(46, 93, 75, 0.2)' }}
-              >
-                <Heart className="w-10 h-10 text-white" />
-              </div>
-              <p 
-                className="text-sm font-semibold text-[#2E5D4B]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Burnout
-              </p>
-            </div>
+              {/* BRANCHES */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Left Branch */}
+                <div className="space-y-4">
+                  {problemNodesLeft.map((node, idx) => (
+                      <div key={idx} className="bg-white p-6 rounded-2xl border-2 border-red-50 shadow-sm hover:border-red-200 transition-colors">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="p-2 bg-red-100 text-red-600 rounded-lg"><node.icon className="w-5 h-5" /></div>
+                          <h5 className="font-serif font-bold text-gray-800">{node.title}</h5>
+                        </div>
+                        <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
+                      </div>
+                  ))}
+                </div>
 
-            {/* Elderly */}
-            <div className="flex flex-col items-center text-center">
-              <div 
-                className="w-20 h-20 rounded-full bg-[#2E5D4B] flex items-center justify-center mb-4"
-                style={{ boxShadow: '0 4px 16px rgba(46, 93, 75, 0.2)' }}
-              >
-                <UserCheck className="w-10 h-10 text-white" />
-              </div>
-              <p 
-                className="text-sm font-semibold text-[#2E5D4B]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Sunyi
-              </p>
-            </div>
-          </div>
-        </div>
+                {/* Middle Branch */}
+                <div className="lg:pt-4">
+                  <div className="bg-red-50 p-6 rounded-2xl border-2 border-red-200 shadow-sm text-center">
+                    <div className="inline-block p-3 bg-red-600 text-white rounded-xl mb-3 shadow-md">
+                      <corporateNode.icon className="w-8 h-8" />
+                    </div>
+                    <h5 className="font-serif font-bold text-gray-900 text-xl mb-2">{corporateNode.title}</h5>
+                    <p className="text-sm text-gray-700 font-medium">{corporateNode.desc}</p>
+                  </div>
+                </div>
 
-        {/* 3. SECTION 2: THE METHODOLOGY */}
-        <div className="py-20 px-8 bg-gradient-to-br from-[#2E5D4B] to-[#1a3529]">
-          <h2 
-            className="text-3xl md:text-4xl text-white text-center mb-16"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Solusi: Kerangka Nafas Tenang
-          </h2>
-
-          {/* Central Diagram with 4 Spokes */}
-          <div className="relative flex items-center justify-center min-h-[550px] max-w-3xl mx-auto">
-            {/* Center Circle */}
-            <div 
-              className="absolute z-10 w-44 h-44 rounded-full bg-[#D4AF37] flex items-center justify-center"
-              style={{ boxShadow: '0 10px 40px rgba(212, 175, 55, 0.5)' }}
-            >
-              <div className="text-center px-4">
-                <div 
-                  className="text-3xl font-bold text-white leading-tight"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  Nafas<br />Tenang
+                {/* Right Branch */}
+                <div className="space-y-4">
+                  {problemNodesRight.map((node, idx) => (
+                      <div key={idx} className="bg-white p-6 rounded-2xl border-2 border-red-50 shadow-sm hover:border-red-200 transition-colors">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="p-2 bg-red-100 text-red-600 rounded-lg"><node.icon className="w-5 h-5" /></div>
+                          <h5 className="font-serif font-bold text-gray-800">{node.title}</h5>
+                        </div>
+                        <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
+                      </div>
+                  ))}
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Top Spoke - Sains Pernafasan */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-              <div 
-                className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-4"
-                style={{ boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)' }}
-              >
-                <Microscope className="w-12 h-12 text-[#2E5D4B]" />
+          {/* SECTION DIVIDER */}
+          <div className="flex justify-center mb-32">
+            <div className="h-24 w-[2px] bg-gradient-to-b from-red-200 to-blue-200"></div>
+          </div>
+
+          {/* =========================================
+            MAP 2: THE SOLUTION CORE (HUB & SPOKE)
+           ========================================= */}
+          <div className="mb-40">
+
+            {/* 1. CONTEXT */}
+            <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-bold uppercase tracking-wide mb-4 border border-blue-100">
+                <CheckCircle2 className="w-4 h-4" />
+                Solusi Kami
               </div>
-              <div className="w-1 h-28 bg-white/30 mb-4"></div>
-              <p 
-                className="text-base font-bold text-white text-center max-w-[140px]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Sains Pernafasan
+              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">
+                Program Nafas Tenang
+              </h3>
+              <p className="text-gray-600 leading-relaxed font-sans text-lg">
+                Kami menawarkan sistem holistik yang menggabungkan 4 tunjang utama di bawah untuk membina ketahanan dalaman dan memulihkan keseimbangan semula jadi tubuh anda.
               </p>
             </div>
 
-            {/* Right Spoke - Mindfulness Somatik */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center">
-              <div className="h-1 w-28 bg-white/30 mr-4"></div>
-              <div className="flex flex-col items-center">
-                <div 
-                  className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-4"
-                  style={{ boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)' }}
-                >
-                  <User className="w-12 h-12 text-[#2E5D4B]" />
+            {/* 2. VISUAL DIAGRAM */}
+            <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+
+              {/* Desktop Lines */}
+              <div className="hidden lg:block absolute top-1/2 left-[25%] right-[25%] h-px border-t-[3px] border-blue-200 -z-10" />
+
+              {/* LEFT NODES */}
+              <div className="space-y-8 order-2 lg:order-1">
+                {solutionNodesLeft.map((node, idx) => (
+                    <div key={idx} className="bg-white p-5 rounded-2xl border-2 border-blue-50 shadow-sm relative group hover:border-blue-300 transition-colors text-right flex flex-col items-end">
+                      <div className="hidden lg:block absolute top-1/2 -right-12 w-12 h-[3px] bg-blue-200" /> {/* Connector */}
+                      <div className="p-2 bg-blue-100 text-[#0E6175] rounded-lg mb-2 inline-block"><node.icon className="w-6 h-6" /></div>
+                      <h4 className="font-serif font-bold text-gray-800 text-lg">{node.title}</h4>
+                      <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
+                    </div>
+                ))}
+              </div>
+
+              {/* HUB NODE */}
+              <div className="order-1 lg:order-2 flex justify-center">
+                <div className="w-48 h-48 rounded-full bg-[#0E6175] text-white shadow-2xl flex flex-col items-center justify-center text-center p-4 z-20 border-8 border-blue-100">
+                  <h3 className="text-2xl font-serif font-bold leading-none mb-1">
+                    Nafas<br/>Tenang
+                  </h3>
+                  <p className="text-xs text-blue-200 mt-1">Metodologi Teras</p>
                 </div>
-                <p 
-                  className="text-base font-bold text-white text-center max-w-[140px]"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Mindfulness Somatik
-                </p>
               </div>
-            </div>
 
-            {/* Bottom Spoke - Regulasi Emosi */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-              <p 
-                className="text-base font-bold text-white text-center max-w-[140px] mb-4"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Regulasi Emosi
-              </p>
-              <div className="w-1 h-28 bg-white/30 mb-4"></div>
-              <div 
-                className="w-24 h-24 rounded-full bg-white flex items-center justify-center"
-                style={{ boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)' }}
-              >
-                <Heart className="w-12 h-12 text-[#2E5D4B]" />
+              {/* RIGHT NODES */}
+              <div className="space-y-8 order-3 lg:order-3">
+                {solutionNodesRight.map((node, idx) => (
+                    <div key={idx} className="bg-white p-5 rounded-2xl border-2 border-blue-50 shadow-sm relative group hover:border-blue-300 transition-colors text-left flex flex-col items-start">
+                      <div className="hidden lg:block absolute top-1/2 -left-12 w-12 h-[3px] bg-blue-200" /> {/* Connector */}
+                      <div className="p-2 bg-blue-100 text-[#0E6175] rounded-lg mb-2 inline-block"><node.icon className="w-6 h-6" /></div>
+                      <h4 className="font-serif font-bold text-gray-800 text-lg">{node.title}</h4>
+                      <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
+                    </div>
+                ))}
               </div>
-            </div>
-
-            {/* Left Spoke - Elemen Islamik */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center">
-              <div className="flex flex-col items-center">
-                <div 
-                  className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-4"
-                  style={{ boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)' }}
-                >
-                  <Moon className="w-12 h-12 text-[#2E5D4B]" />
-                </div>
-                <p 
-                  className="text-base font-bold text-white text-center max-w-[140px]"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Elemen Islamik
-                </p>
-              </div>
-              <div className="h-1 w-28 bg-white/30 ml-4"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* 4. SECTION 3: ESG IMPACT & PROGRAMS */}
-        <div className="py-20 px-8 bg-gradient-to-b from-white to-[#F4F7F6]">
-          <h2 
-            className="text-3xl md:text-4xl text-[#2E5D4B] text-center mb-16"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Impak ESG & Program Utama
-          </h2>
-
-          {/* ESG Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-4xl mx-auto">
-            {/* E - Environment */}
-            <div className="bg-white rounded-[20px] p-8 text-center" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-              <div 
-                className="w-20 h-20 rounded-full bg-[#5A8F7B] flex items-center justify-center mx-auto mb-4"
-                style={{ boxShadow: '0 4px 16px rgba(90, 143, 123, 0.3)' }}
-              >
-                <Leaf className="w-10 h-10 text-white" />
-              </div>
-              <div 
-                className="text-4xl font-bold text-[#D4AF37] mb-2"
-                style={{ fontFamily: 'Playfair Display, serif' }}
-              >
-                E
-              </div>
-              <h3 
-                className="text-lg font-semibold text-[#2E5D4B] mb-2"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Alam Sekitar
-              </h3>
-              <p 
-                className="text-gray-600 text-sm"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Tenaga Tanpa Karbon
-              </p>
-            </div>
-
-            {/* S - Social */}
-            <div className="bg-white rounded-[20px] p-8 text-center" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-              <div 
-                className="w-20 h-20 rounded-full bg-[#5A8F7B] flex items-center justify-center mx-auto mb-4"
-                style={{ boxShadow: '0 4px 16px rgba(90, 143, 123, 0.3)' }}
-              >
-                <Users className="w-10 h-10 text-white" />
-              </div>
-              <div 
-                className="text-4xl font-bold text-[#D4AF37] mb-2"
-                style={{ fontFamily: 'Playfair Display, serif' }}
-              >
-                S
-              </div>
-              <h3 
-                className="text-lg font-semibold text-[#2E5D4B] mb-2"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Sosial
-              </h3>
-              <p 
-                className="text-gray-600 text-sm"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Kesejahteraan Berukur
-              </p>
-            </div>
-
-            {/* G - Governance */}
-            <div className="bg-white rounded-[20px] p-8 text-center" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-              <div 
-                className="w-20 h-20 rounded-full bg-[#5A8F7B] flex items-center justify-center mx-auto mb-4"
-                style={{ boxShadow: '0 4px 16px rgba(90, 143, 123, 0.3)' }}
-              >
-                <Building2 className="w-10 h-10 text-white" />
-              </div>
-              <div 
-                className="text-4xl font-bold text-[#D4AF37] mb-2"
-                style={{ fontFamily: 'Playfair Display, serif' }}
-              >
-                G
-              </div>
-              <h3 
-                className="text-lg font-semibold text-[#2E5D4B] mb-2"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Tadbir Urus
-              </h3>
-              <p 
-                className="text-gray-600 text-sm"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Diiktiraf HRDC & ROI
-              </p>
             </div>
           </div>
 
-          {/* Program Cards - Vertical List */}
-          <div className="max-w-3xl mx-auto space-y-4">
-            {/* Program 1 */}
-            <div 
-              className="bg-white rounded-[20px] p-6 flex items-center gap-6 hover:shadow-lg transition-all duration-300"
-              style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06)' }}
-            >
-              <div 
-                className="w-16 h-16 rounded-full bg-[#2E5D4B] flex items-center justify-center flex-shrink-0"
-                style={{ boxShadow: '0 4px 12px rgba(46, 93, 75, 0.2)' }}
-              >
-                <Briefcase className="w-8 h-8 text-white" />
+          {/* SECTION DIVIDER */}
+          <div className="flex justify-center mb-32">
+            <div className="h-24 w-[2px] bg-gradient-to-b from-blue-200 to-emerald-200"></div>
+          </div>
+
+          {/* =========================================
+            MAP 3: ESG TREE (HIERARCHY)
+           ========================================= */}
+          <div className="relative">
+
+            {/* 1. CONTEXT */}
+            <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 rounded-full text-sm font-bold uppercase tracking-wide mb-4 border border-emerald-100">
+                <ShieldCheck className="w-4 h-4" />
+                Impak Mampan
               </div>
-              <div className="flex-1">
-                <h4 
-                  className="text-lg font-semibold text-[#2E5D4B] mb-1"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Kesejahteraan Emosi di Tempat Kerja
-                </h4>
-                <p 
-                  className="text-sm text-gray-600"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  0.5 Days • Korporat
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <span 
-                  className="inline-block px-4 py-2 rounded-full bg-[#F4F7F6] text-[#2E5D4B] text-xs font-bold"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  POPULAR
-                </span>
-              </div>
+              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">
+                Piawaian E.S.G
+              </h3>
+              <p className="text-gray-600 leading-relaxed font-sans text-lg">
+                Apabila individu pulih, organisasi berkembang. Kami memastikan setiap program menyumbang secara langsung kepada piawaian Alam Sekitar, Sosial, dan Tadbir Urus korporat anda.
+              </p>
             </div>
 
-            {/* Program 2 */}
-            <div 
-              className="bg-white rounded-[20px] p-6 flex items-center gap-6 hover:shadow-lg transition-all duration-300"
-              style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06)' }}
-            >
-              <div 
-                className="w-16 h-16 rounded-full bg-[#D4AF37] flex items-center justify-center flex-shrink-0"
-                style={{ boxShadow: '0 4px 12px rgba(212, 175, 55, 0.2)' }}
-              >
-                <TrendingUp className="w-8 h-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h4 
-                  className="text-lg font-semibold text-[#2E5D4B] mb-1"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Pernafasan untuk Kepimpinan
-                </h4>
-                <p 
-                  className="text-sm text-gray-600"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Executive • Kepimpinan
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <span 
-                  className="inline-block px-4 py-2 rounded-full bg-[#D4AF37] text-white text-xs font-bold"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  EXECUTIVE
-                </span>
-              </div>
-            </div>
+            {/* 2. VISUAL DIAGRAM */}
+            <div className="relative">
+              {/* Desktop Lines */}
+              <div className="hidden lg:block absolute top-[-30px] left-1/2 w-px h-24 bg-gray-300 -translate-x-1/2 z-0" />
+              <div className="hidden lg:block absolute top-[66px] left-[16%] right-[16%] h-px border-t-[3px] border-gray-200 z-0 rounded-full" />
+              <div className="hidden lg:block absolute top-[66px] left-[16%] w-px h-12 bg-gray-300 z-0" />
+              <div className="hidden lg:block absolute top-[66px] right-[16%] w-px h-12 bg-gray-300 z-0" />
+              <div className="hidden lg:block absolute top-[66px] left-1/2 w-px h-12 bg-gray-300 -translate-x-1/2 z-0" />
 
-            {/* Program 3 */}
-            <div 
-              className="bg-white rounded-[20px] p-6 flex items-center gap-6 hover:shadow-lg transition-all duration-300"
-              style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06)' }}
-            >
-              <div 
-                className="w-16 h-16 rounded-full bg-[#5A8F7B] flex items-center justify-center flex-shrink-0"
-                style={{ boxShadow: '0 4px 12px rgba(90, 143, 123, 0.2)' }}
-              >
-                <Heart className="w-8 h-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h4 
-                  className="text-lg font-semibold text-[#2E5D4B] mb-1"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Kelegaan Tekanan Penjaga
-                </h4>
-                <p 
-                  className="text-sm text-gray-600"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Caregivers • Komuniti
-                </p>
-              </div>
-            </div>
-
-            {/* Program 4 */}
-            <div 
-              className="bg-white rounded-[20px] p-6 flex items-center gap-6 hover:shadow-lg transition-all duration-300"
-              style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06)' }}
-            >
-              <div 
-                className="w-16 h-16 rounded-full bg-[#2E5D4B] flex items-center justify-center flex-shrink-0"
-                style={{ boxShadow: '0 4px 12px rgba(46, 93, 75, 0.2)' }}
-              >
-                <FileText className="w-8 h-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h4 
-                  className="text-lg font-semibold text-[#2E5D4B] mb-1"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  PDPA & Etika Data
-                </h4>
-                <p 
-                  className="text-sm text-gray-600"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Professional • Tadbir Urus
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <span 
-                  className="inline-block px-4 py-2 rounded-full bg-[#F4F7F6] text-[#2E5D4B] text-xs font-bold"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  HRDC
-                </span>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
+                {esgNodes.map((node, idx) => (
+                    <div key={idx} className={`bg-white rounded-3xl p-8 border-2 ${node.border} shadow-sm flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 h-full relative z-10`}>
+                      <div className={`w-16 h-16 rounded-2xl ${node.bg} flex items-center justify-center mb-6 text-2xl font-black font-serif ${node.color} shadow-inner`}>
+                        {node.letter}
+                      </div>
+                      <h4 className={`text-2xl font-serif font-bold mb-3 ${node.color.replace('text-', 'text-gray-900 ')}`}>
+                        {node.title}
+                      </h4>
+                      <p className="text-gray-600 font-sans leading-relaxed font-medium">
+                        {node.desc}
+                      </p>
+                    </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
 
-        {/* 5. FOOTER CTA */}
-        <div 
-          className="py-16 px-8 text-center"
-          style={{ background: 'linear-gradient(135deg, #5A8F7B 0%, #4a7a68 100%)' }}
-        >
-          <h3 
-            className="text-3xl md:text-4xl text-white mb-6"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Sedia untuk Transformasi Organisasi Anda?
-          </h3>
-          <button 
-            className="px-10 py-4 bg-[#D4AF37] text-white rounded-full hover:bg-[#c19d2f] active:bg-[#b08e28] transition-all duration-300 text-lg font-semibold"
-            style={{ 
-              fontFamily: 'Inter, sans-serif',
-              boxShadow: '0 6px 24px rgba(212, 175, 55, 0.4)'
-            }}
-          >
-            Hubungi Kami
-          </button>
         </div>
-
-      </div>
-    </section>
+      </section>
   );
 }

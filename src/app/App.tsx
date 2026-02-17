@@ -9,10 +9,10 @@ import { MomentsGallery } from '@/app/components/MomentsGallery';
 import { FooterCTA } from '@/app/components/FooterCTA';
 import { FloatingBar } from '@/app/components/FloatingBar';
 import { Footer } from '@/app/components/Footer';
+import { WellnessInfographic } from '@/app/components/WellnessInfographic';
 import { ContactPage } from '@/app/pages/ContactPage';
 import { ProgramListPage } from '@/app/pages/ProgramListPage';
-
-// 👇 IMPORT THE NEW COMPONENT
+import { FullGalleryPage } from '@/app/pages/FullGalleryPage';
 import ScrollToTop from '@/app/components/ScrollToTop';
 
 function HomePage() {
@@ -21,6 +21,7 @@ function HomePage() {
             <Navigation />
             <main>
                 <div id="home"><HeroSection /></div>
+                <div id="WellnessInfographic"><WellnessInfographic /></div>
                 <div id="leadership"><LeadershipBento /></div>
                 <div id="campus"><MapTeaser /></div>
                 <div id="bulletin"><CommunityBulletin /></div>
@@ -44,6 +45,7 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/hubungi-kami" element={<ContactPage />} />
                 <Route path="/senarai-program" element={<ProgramListPage />} />
+                <Route path="/gallery" element={<FullGalleryPage />} />
             </Routes>
         </BrowserRouter>
     );
