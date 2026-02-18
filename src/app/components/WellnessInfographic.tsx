@@ -1,324 +1,320 @@
+import React from 'react';
+import { motion } from 'motion/react';
 import {
-  Users,
-  Baby,
-  User,
-  HeartHandshake,
-  Armchair,
-  Briefcase,
-  Leaf,
-  Scale,
-  BrainCircuit,
-  Activity,
-  AlertTriangle,
-  DollarSign,
-  Flower2,
-  ShieldCheck,
-  XCircle,
-  CheckCircle2
+    Users,
+    User,
+    Baby,
+    Briefcase,
+    Heart,
+    Wind,
+    Brain,
+    ShieldCheck,
+    Leaf,
+    Globe,
+    Scale,
+    Activity
 } from 'lucide-react';
 
-export function WellnessInfographic() {
+const Card = ({ children, borderColor = "border-gray-200", bgColor = "bg-white", className = "" }: { children: React.ReactNode, borderColor?: string, bgColor?: string, className?: string }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className={`${bgColor} border-2 ${borderColor} rounded-[24px] p-6 shadow-sm hover:shadow-md transition-all duration-300 ${className}`}
+    >
+        {children}
+    </motion.div>
+);
 
-  // --- DATA ---
-  const problemNodesLeft = [
-    {
-      title: "Kanak-kanak",
-      desc: "Kekurangan pendedahan awal kepada pengurusan emosi menyebabkan mudah cemas & tantrum.",
-      icon: Baby
-    },
-    {
-      title: "Remaja",
-      desc: "Tekanan akademik & media sosial mencipta krisis keyakinan diri.",
-      icon: User
-    },
-  ];
+const SectionHeader = ({ title, subtext }: { title: string, subtext?: string }) => (
+    <div className="text-center mb-12">
+        <h2 className="font-['Playfair_Display'] text-3xl md:text-4xl text-[#0E6175] font-bold mb-4">
+            {title}
+        </h2>
+        {subtext && (
+            <p className="font-['Inter'] text-gray-600 max-w-2xl mx-auto">
+                {subtext}
+            </p>
+        )}
+    </div>
+);
 
-  const problemNodesRight = [
-    {
-      title: "Ibu-ibu",
-      desc: "Beban berganda kerjaya & rumahtangga mengakibatkan keletihan mental (burnout).",
-      icon: HeartHandshake
-    },
-    {
-      title: "Warga Emas",
-      desc: "Kesunyian akibat isolasi sosial meningkatkan risiko kemurungan.",
-      icon: Armchair
-    },
-  ];
+const ConnectorLine = ({ className = "" }: { className?: string }) => (
+    <div className={`w-px mx-auto ${className}`} />
+);
 
-  const corporateNode = {
-    title: "Sektor Korporat",
-    desc: "9/10 pekerja alami tekanan tinggi. Keletihan mental menjejaskan produktiviti.",
-    icon: Briefcase
-  };
+export const WellnessInfographic = () => {
+    return (
+        <section className="py-24 px-4 bg-[#F8FDFF] overflow-hidden">
+            {/* Reduced space-y-32 to space-y-8 to bring sections closer to the new divider lines */}
+            <div className="max-w-6xl mx-auto space-y-8">
 
-  const solutionNodesLeft = [
-    {
-      title: "Sains Pernafasan",
-      desc: "Teknik berasaskan data untuk mengoptimumkan oksigen & fokus kognitif.",
-      icon: Activity
-    },
-    {
-      title: "Mindfulness Somatik",
-      desc: "Latihan kesedaran tubuh untuk mengenali tanda awal stres.",
-      icon: User
-    },
-  ];
-
-  const solutionNodesRight = [
-    {
-      title: "Regulasi Emosi",
-      desc: "Strategi praktikal mengawal emosi di tempat kerja secara profesional.",
-      icon: BrainCircuit
-    },
-    {
-      title: "Elemen Holistik",
-      desc: "Pendekatan menyantuni nilai spiritual & budaya tempatan.",
-      icon: Flower2
-    },
-  ];
-
-  const esgNodes = [
-    {
-      letter: "E",
-      title: "Alam Sekitar",
-      desc: "Gaya hidup minimalis & tenaga 'hijau' tanpa jejak karbon.",
-      icon: Leaf,
-      color: "text-emerald-700",
-      bg: "bg-emerald-100",
-      border: "border-emerald-300"
-    },
-    {
-      letter: "S",
-      title: "Sosial",
-      desc: "Memperkasa golongan rentan & melatih fasilitator komuniti.",
-      icon: Users,
-      color: "text-blue-700",
-      bg: "bg-blue-100",
-      border: "border-blue-300"
-    },
-    {
-      letter: "G",
-      title: "Tadbir Urus",
-      desc: "Latihan telus diiktiraf HRDC dengan penjejakan ROI jelas.",
-      icon: Scale,
-      color: "text-purple-700",
-      bg: "bg-purple-100",
-      border: "border-purple-300"
-    },
-  ];
-
-  return (
-      <section className="py-24 px-6 bg-[#F8FDFF] overflow-hidden font-sans">
-        <div className="max-w-7xl mx-auto">
-
-          {/* MAIN TITLE */}
-          <div className="text-center mb-24">
-          <span className="text-[#0E6175] font-semibold tracking-wider uppercase text-sm mb-3 block font-sans">
-            Peta Minda Kesejahteraan
-          </span>
-            <h2 className="text-4xl md:text-5xl text-[#0E6175] font-serif font-medium mb-6">
-              Ekosistem <span className="italic">Healing Village</span>
-            </h2>
-          </div>
-
-          {/* =========================================
-            MAP 1: THE PROBLEM WEB (HIERARCHY)
-           ========================================= */}
-          <div className="mb-40">
-
-            {/* 1. CONTEXT (TEXT BLOCK) */}
-            <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-50 text-red-600 rounded-full text-sm font-bold uppercase tracking-wide mb-4 border border-red-100">
-                <XCircle className="w-4 h-4" />
-                Punca Masalah
-              </div>
-              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">
-                Realiti Semasa Rakyat Malaysia
-              </h3>
-              <p className="text-gray-600 leading-relaxed font-sans text-lg">
-                Rakyat Malaysia dari pelbagai lapisan umur sedang berhadapan dengan krisis kesejahteraan. Rajah di bawah memetakan bagaimana tekanan emosi saling berkait antara rumah dan tempat kerja, mencipta kitaran yang sukar diputuskan.
-              </p>
-            </div>
-
-            {/* 2. VISUAL DIAGRAM (PURE) */}
-            <div className="relative">
-              {/* Desktop Connector Lines */}
-              <div className="hidden lg:block absolute top-[60px] left-1/2 w-px h-16 bg-red-300 -translate-x-1/2 z-0" /> {/* Stem */}
-              <div className="hidden lg:block absolute top-[124px] left-[16%] right-[16%] h-px border-t-[3px] border-red-200 z-0 rounded-full" /> {/* Crossbar */}
-              <div className="hidden lg:block absolute top-[124px] left-[16%] w-px h-12 bg-red-300 z-0" /> {/* Left Drop */}
-              <div className="hidden lg:block absolute top-[124px] right-[16%] w-px h-12 bg-red-300 z-0" /> {/* Right Drop */}
-              <div className="hidden lg:block absolute top-[124px] left-1/2 w-px h-12 bg-red-300 z-0 -translate-x-1/2" /> {/* Middle Drop */}
-
-              {/* ROOT NODE (Visual Only) */}
-              <div className="flex justify-center mb-16 relative z-10">
-                <div className="w-32 h-32 rounded-full bg-white border-[6px] border-red-100 shadow-xl flex items-center justify-center z-10">
-                  <h4 className="text-xl font-serif font-bold text-red-600 text-center leading-none">
-                    Cabaran<br/>Utama
-                  </h4>
+                {/* --- MAIN GLOBAL HEADER --- */}
+                <div className="text-center pt-8 pb-8">
+                    <motion.h1
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="font-['Playfair_Display'] text-4xl md:text-6xl text-[#0284C7] font-medium mb-6 leading-tight"
+                    >
+                        Memperkasa Manusia, Melestarikan Alam
+                    </motion.h1>
                 </div>
-              </div>
 
-              {/* BRANCHES */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Left Branch */}
-                <div className="space-y-4">
-                  {problemNodesLeft.map((node, idx) => (
-                      <div key={idx} className="bg-white p-6 rounded-2xl border-2 border-red-50 shadow-sm hover:border-red-200 transition-colors">
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="p-2 bg-red-100 text-red-600 rounded-lg"><node.icon className="w-5 h-5" /></div>
-                          <h5 className="font-serif font-bold text-gray-800">{node.title}</h5>
+                {/* Section 1: The Problem Map (Red Theme) */}
+                <div className="relative">
+                    <SectionHeader
+                        title="Realiti Semasa Rakyat Malaysia"
+                        subtext="Meneroka krisis kesejahteraan yang melanda pelbagai lapisan masyarakat kita hari ini."
+                    />
+
+                    <div className="flex flex-col items-center">
+                        {/* Hub */}
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="relative z-10"
+                        >
+                            <div className="w-40 h-40 rounded-full border-4 border-red-500 bg-white flex flex-col items-center justify-center text-center p-4 shadow-xl">
+                                <Activity className="text-red-500 mb-2" size={32} />
+                                <span className="font-['Inter'] font-bold text-red-600 leading-tight">Cabaran Utama</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Vertical Connector */}
+                        <ConnectorLine className="h-12 bg-red-200" />
+
+                        {/* Horizontal Branch Line */}
+                        <div className="w-full max-w-4xl h-px bg-red-200 relative">
+                            <div className="absolute left-0 top-0 h-4 w-px bg-red-200" />
+                            <div className="absolute left-1/2 top-0 h-4 w-px bg-red-200" />
+                            <div className="absolute right-0 top-0 h-4 w-px bg-red-200" />
                         </div>
-                        <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
-                      </div>
-                  ))}
-                </div>
 
-                {/* Middle Branch */}
-                <div className="lg:pt-4">
-                  <div className="bg-red-50 p-6 rounded-2xl border-2 border-red-200 shadow-sm text-center">
-                    <div className="inline-block p-3 bg-red-600 text-white rounded-xl mb-3 shadow-md">
-                      <corporateNode.icon className="w-8 h-8" />
-                    </div>
-                    <h5 className="font-serif font-bold text-gray-900 text-xl mb-2">{corporateNode.title}</h5>
-                    <p className="text-sm text-gray-700 font-medium">{corporateNode.desc}</p>
-                  </div>
-                </div>
+                        {/* Grid for Groups */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4 w-full">
+                            {/* Group 1: Kids & Youth */}
+                            <div className="space-y-4">
+                                <Card borderColor="border-red-200" className="flex items-center gap-4">
+                                    <div className="bg-red-50 p-3 rounded-xl">
+                                        <Baby className="text-red-500" size={24} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175]">Kanak-kanak</h4>
+                                        <p className="font-['Inter'] text-sm text-gray-500">Isu perkembangan & nutrisi</p>
+                                    </div>
+                                </Card>
+                                <Card borderColor="border-red-200" className="flex items-center gap-4">
+                                    <div className="bg-red-50 p-3 rounded-xl">
+                                        <Users className="text-red-500" size={24} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175]">Remaja</h4>
+                                        <p className="font-['Inter'] text-sm text-gray-500">Tekanan mental & sosial</p>
+                                    </div>
+                                </Card>
+                            </div>
 
-                {/* Right Branch */}
-                <div className="space-y-4">
-                  {problemNodesRight.map((node, idx) => (
-                      <div key={idx} className="bg-white p-6 rounded-2xl border-2 border-red-50 shadow-sm hover:border-red-200 transition-colors">
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="p-2 bg-red-100 text-red-600 rounded-lg"><node.icon className="w-5 h-5" /></div>
-                          <h5 className="font-serif font-bold text-gray-800">{node.title}</h5>
+                            {/* Group 2: Corporate (Highlighted) */}
+                            <div className="flex flex-col justify-center">
+                                <motion.div
+                                    whileHover={{ scale: 1.02 }}
+                                    className="bg-red-600 rounded-[24px] p-8 shadow-xl text-white relative overflow-hidden group"
+                                >
+                                    <div className="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+                                        <Briefcase size={120} />
+                                    </div>
+                                    <div className="relative z-10 flex flex-col items-center text-center">
+                                        <div className="bg-white/20 p-4 rounded-2xl mb-4">
+                                            <Briefcase className="text-white" size={32} />
+                                        </div>
+                                        <h4 className="font-['Playfair_Display'] text-2xl font-bold mb-2">Sektor Korporat</h4>
+                                        <p className="font-['Inter'] text-red-50 text-sm">Burnout, stres melampau, dan produktiviti rendah dalam ekosistem kerja moden.</p>
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            {/* Group 3: Mothers & Seniors */}
+                            <div className="space-y-4">
+                                <Card borderColor="border-red-200" className="flex items-center gap-4">
+                                    <div className="bg-red-50 p-3 rounded-xl">
+                                        <Heart className="text-red-500" size={24} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175]">Ibu-ibu</h4>
+                                        <p className="font-['Inter'] text-sm text-gray-500">Keseimbangan kerja & keluarga</p>
+                                    </div>
+                                </Card>
+                                <Card borderColor="border-red-200" className="flex items-center gap-4">
+                                    <div className="bg-red-50 p-3 rounded-xl">
+                                        <User className="text-red-500" size={24} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175]">Warga Emas</h4>
+                                        <p className="font-['Inter'] text-sm text-gray-500">Kesunyian & kesihatan fizikal</p>
+                                    </div>
+                                </Card>
+                            </div>
                         </div>
-                        <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
-                      </div>
-                  ))}
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          {/* SECTION DIVIDER */}
-          <div className="flex justify-center mb-32">
-            <div className="h-24 w-[2px] bg-gradient-to-b from-red-200 to-blue-200"></div>
-          </div>
-
-          {/* =========================================
-            MAP 2: THE SOLUTION CORE (HUB & SPOKE)
-           ========================================= */}
-          <div className="mb-40">
-
-            {/* 1. CONTEXT */}
-            <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-bold uppercase tracking-wide mb-4 border border-blue-100">
-                <CheckCircle2 className="w-4 h-4" />
-                Solusi Kami
-              </div>
-              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">
-                Program Nafas Tenang
-              </h3>
-              <p className="text-gray-600 leading-relaxed font-sans text-lg">
-                Kami menawarkan sistem holistik yang menggabungkan 4 tunjang utama di bawah untuk membina ketahanan dalaman dan memulihkan keseimbangan semula jadi tubuh anda.
-              </p>
-            </div>
-
-            {/* 2. VISUAL DIAGRAM */}
-            <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-
-              {/* Desktop Lines */}
-              <div className="hidden lg:block absolute top-1/2 left-[25%] right-[25%] h-px border-t-[3px] border-blue-200 -z-10" />
-
-              {/* LEFT NODES */}
-              <div className="space-y-8 order-2 lg:order-1">
-                {solutionNodesLeft.map((node, idx) => (
-                    <div key={idx} className="bg-white p-5 rounded-2xl border-2 border-blue-50 shadow-sm relative group hover:border-blue-300 transition-colors text-right flex flex-col items-end">
-                      <div className="hidden lg:block absolute top-1/2 -right-12 w-12 h-[3px] bg-blue-200" /> {/* Connector */}
-                      <div className="p-2 bg-blue-100 text-[#0E6175] rounded-lg mb-2 inline-block"><node.icon className="w-6 h-6" /></div>
-                      <h4 className="font-serif font-bold text-gray-800 text-lg">{node.title}</h4>
-                      <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
-                    </div>
-                ))}
-              </div>
-
-              {/* HUB NODE */}
-              <div className="order-1 lg:order-2 flex justify-center">
-                <div className="w-48 h-48 rounded-full bg-[#0E6175] text-white shadow-2xl flex flex-col items-center justify-center text-center p-4 z-20 border-8 border-blue-100">
-                  <h3 className="text-2xl font-serif font-bold leading-none mb-1">
-                    Nafas<br/>Tenang
-                  </h3>
-                  <p className="text-xs text-blue-200 mt-1">Metodologi Teras</p>
+                {/* --- VISUAL DIVIDER 1: Red (Problem) to Blue (Solution) --- */}
+                <div className="flex justify-center py-8">
+                    <div className="h-32 w-[2px] bg-gradient-to-b from-red-200 to-[#4297AA]/50 rounded-full"></div>
                 </div>
-              </div>
 
-              {/* RIGHT NODES */}
-              <div className="space-y-8 order-3 lg:order-3">
-                {solutionNodesRight.map((node, idx) => (
-                    <div key={idx} className="bg-white p-5 rounded-2xl border-2 border-blue-50 shadow-sm relative group hover:border-blue-300 transition-colors text-left flex flex-col items-start">
-                      <div className="hidden lg:block absolute top-1/2 -left-12 w-12 h-[3px] bg-blue-200" /> {/* Connector */}
-                      <div className="p-2 bg-blue-100 text-[#0E6175] rounded-lg mb-2 inline-block"><node.icon className="w-6 h-6" /></div>
-                      <h4 className="font-serif font-bold text-gray-800 text-lg">{node.title}</h4>
-                      <p className="text-sm text-gray-600 font-medium">{node.desc}</p>
+                {/* Section 2: The Solution Core (Blue/Teal Theme) */}
+                <div className="relative">
+                    <SectionHeader
+                        title="Solusi: Program Nafas Tenang"
+                        subtext="Pendekatan holistik yang menggabungkan sains dan tradisi untuk pemulihan menyeluruh."
+                    />
+
+                    <div className="relative min-h-[500px] flex items-center justify-center">
+                        {/* SVG Lines for Hub and Spoke */}
+                        <svg className="absolute inset-0 w-full h-full pointer-events-none hidden md:block" viewBox="0 0 800 500">
+                            <line x1="400" y1="250" x2="200" y2="150" stroke="#4297AA" strokeWidth="2" strokeDasharray="4 4" />
+                            <line x1="400" y1="250" x2="200" y2="350" stroke="#4297AA" strokeWidth="2" strokeDasharray="4 4" />
+                            <line x1="400" y1="250" x2="600" y2="150" stroke="#4297AA" strokeWidth="2" strokeDasharray="4 4" />
+                            <line x1="400" y1="250" x2="600" y2="350" stroke="#4297AA" strokeWidth="2" strokeDasharray="4 4" />
+                        </svg>
+
+                        {/* Mobile Vertical Lines */}
+                        <div className="absolute top-0 bottom-0 left-1/2 w-px bg-teal-100 md:hidden" />
+
+                        {/* Hub and Spoke Layout */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center w-full max-w-5xl z-10">
+                            {/* Left Column */}
+                            <div className="space-y-12 order-2 md:order-1">
+                                <Card borderColor="border-[#4297AA]" className="text-center md:text-right">
+                                    <div className="bg-cyan-50 p-3 rounded-xl w-fit mb-4 mx-auto md:ml-auto md:mr-0">
+                                        <Wind className="text-[#4297AA]" size={24} />
+                                    </div>
+                                    <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175] text-xl mb-2">Sains Pernafasan</h4>
+                                    <p className="font-['Inter'] text-sm text-gray-500">Teknik pernafasan berasaskan bukti klinikal untuk regulasi sistem saraf.</p>
+                                </Card>
+                                <Card borderColor="border-[#4297AA]" className="text-center md:text-right">
+                                    <div className="bg-cyan-50 p-3 rounded-xl w-fit mb-4 mx-auto md:ml-auto md:mr-0">
+                                        <Brain className="text-[#4297AA]" size={24} />
+                                    </div>
+                                    <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175] text-xl mb-2">Mindfulness Somatik</h4>
+                                    <p className="font-['Inter'] text-sm text-gray-500">Kesedaran tubuh untuk melepaskan trauma dan ketegangan fizikal terpendam.</p>
+                                </Card>
+                            </div>
+
+                            {/* Center Hub */}
+                            <div className="flex justify-center order-1 md:order-2">
+                                <motion.div
+                                    animate={{
+                                        boxShadow: ["0 0 0 0px rgba(14, 97, 117, 0.4)", "0 0 0 20px rgba(14, 97, 117, 0)"],
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                    className="w-56 h-56 rounded-full bg-[#0E6175] flex items-center justify-center text-center p-8 shadow-2xl"
+                                >
+                                    <div className="text-white">
+                                        <Wind className="mx-auto mb-3" size={40} />
+                                        <h3 className="font-['Playfair_Display'] text-2xl font-bold leading-tight">Nafas Tenang</h3>
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            {/* Right Column */}
+                            <div className="space-y-12 order-3">
+                                <Card borderColor="border-[#4297AA]" className="text-center md:text-left">
+                                    <div className="bg-cyan-50 p-3 rounded-xl w-fit mb-4 mx-auto md:mr-auto md:ml-0">
+                                        <ShieldCheck className="text-[#4297AA]" size={24} />
+                                    </div>
+                                    <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175] text-xl mb-2">Regulasi Emosi</h4>
+                                    <p className="font-['Inter'] text-sm text-gray-500">Strategi menguruskan respon emosi terhadap tekanan kerja dan persekitaran.</p>
+                                </Card>
+                                <Card borderColor="border-[#4297AA]" className="text-center md:text-left">
+                                    <div className="bg-cyan-50 p-3 rounded-xl w-fit mb-4 mx-auto md:mr-auto md:ml-0">
+                                        <Activity className="text-[#4297AA]" size={24} />
+                                    </div>
+                                    <h4 className="font-['Playfair_Display'] font-bold text-[#0E6175] text-xl mb-2">Elemen Holistik</h4>
+                                    <p className="font-['Inter'] text-sm text-gray-500">Integrasi pemakanan, pergerakan, dan alam semulajadi untuk pemulihan.</p>
+                                </Card>
+                            </div>
+                        </div>
                     </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                </div>
 
-          {/* SECTION DIVIDER */}
-          <div className="flex justify-center mb-32">
-            <div className="h-24 w-[2px] bg-gradient-to-b from-blue-200 to-emerald-200"></div>
-          </div>
+                {/* --- VISUAL DIVIDER 2: Blue (Solution) to Green (ESG) --- */}
+                <div className="flex justify-center py-8">
+                    <div className="h-32 w-[2px] bg-gradient-to-b from-[#4297AA]/50 to-emerald-200 rounded-full"></div>
+                </div>
 
-          {/* =========================================
-            MAP 3: ESG TREE (HIERARCHY)
-           ========================================= */}
-          <div className="relative">
+                {/* Section 3: ESG Impact Tree (Green/Blue/Purple Theme) */}
+                <div>
+                    <SectionHeader
+                        title="Impak E.S.G"
+                        subtext="Komitmen kami terhadap kelestarian alam, kesejahteraan sosial, dan tadbir urus beretika."
+                    />
 
-            {/* 1. CONTEXT */}
-            <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 rounded-full text-sm font-bold uppercase tracking-wide mb-4 border border-emerald-100">
-                <ShieldCheck className="w-4 h-4" />
-                Impak Mampan
-              </div>
-              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">
-                Piawaian E.S.G
-              </h3>
-              <p className="text-gray-600 leading-relaxed font-sans text-lg">
-                Apabila individu pulih, organisasi berkembang. Kami memastikan setiap program menyumbang secara langsung kepada piawaian Alam Sekitar, Sosial, dan Tadbir Urus korporat anda.
-              </p>
-            </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Environmental */}
+                        <Card borderColor="border-emerald-200" className="group">
+                            <div className="mb-6 flex justify-between items-start">
+                                <div className="bg-emerald-100 p-4 rounded-2xl group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                                    <Leaf size={32} className="text-emerald-600 group-hover:text-white" />
+                                </div>
+                                <span className="text-6xl font-black text-emerald-50 opacity-100 group-hover:text-emerald-100 transition-colors">E</span>
+                            </div>
+                            <h4 className="font-['Playfair_Display'] text-2xl font-bold text-[#0E6175] mb-4">Environmental</h4>
+                            <p className="font-['Inter'] text-gray-600 leading-relaxed">
+                                Pemuliharaan ekosistem hutan hujan tropika Malaysia dan amalan operasi rendah karbon di setiap premis kami.
+                            </p>
+                            <ul className="mt-6 space-y-2 font-['Inter'] text-sm text-emerald-700">
+                                <li className="flex items-center gap-2">• Sifar Plastik Sekali Guna</li>
+                                <li className="flex items-center gap-2">• Pemuliharaan Biodiversiti</li>
+                            </ul>
+                        </Card>
 
-            {/* 2. VISUAL DIAGRAM */}
-            <div className="relative">
-              {/* Desktop Lines */}
-              <div className="hidden lg:block absolute top-[-30px] left-1/2 w-px h-24 bg-gray-300 -translate-x-1/2 z-0" />
-              <div className="hidden lg:block absolute top-[66px] left-[16%] right-[16%] h-px border-t-[3px] border-gray-200 z-0 rounded-full" />
-              <div className="hidden lg:block absolute top-[66px] left-[16%] w-px h-12 bg-gray-300 z-0" />
-              <div className="hidden lg:block absolute top-[66px] right-[16%] w-px h-12 bg-gray-300 z-0" />
-              <div className="hidden lg:block absolute top-[66px] left-1/2 w-px h-12 bg-gray-300 -translate-x-1/2 z-0" />
+                        {/* Social */}
+                        <Card borderColor="border-blue-200" className="group">
+                            <div className="mb-6 flex justify-between items-start">
+                                <div className="bg-blue-100 p-4 rounded-2xl group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+                                    <Globe size={32} className="text-blue-600 group-hover:text-white" />
+                                </div>
+                                <span className="text-6xl font-black text-blue-50 opacity-100 group-hover:text-blue-100 transition-colors">S</span>
+                            </div>
+                            <h4 className="font-['Playfair_Display'] text-2xl font-bold text-[#0E6175] mb-4">Social</h4>
+                            <p className="font-['Inter'] text-gray-600 leading-relaxed">
+                                Meningkatkan taraf hidup komuniti tempatan dan memperkasakan kesihatan mental tenaga kerja korporat negara.
+                            </p>
+                            <ul className="mt-6 space-y-2 font-['Inter'] text-sm text-blue-700">
+                                <li className="flex items-center gap-2">• Sokongan Kesihatan Mental</li>
+                                <li className="flex items-center gap-2">• Pemerkasaan Komuniti</li>
+                            </ul>
+                        </Card>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
-                {esgNodes.map((node, idx) => (
-                    <div key={idx} className={`bg-white rounded-3xl p-8 border-2 ${node.border} shadow-sm flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 h-full relative z-10`}>
-                      <div className={`w-16 h-16 rounded-2xl ${node.bg} flex items-center justify-center mb-6 text-2xl font-black font-serif ${node.color} shadow-inner`}>
-                        {node.letter}
-                      </div>
-                      <h4 className={`text-2xl font-serif font-bold mb-3 ${node.color.replace('text-', 'text-gray-900 ')}`}>
-                        {node.title}
-                      </h4>
-                      <p className="text-gray-600 font-sans leading-relaxed font-medium">
-                        {node.desc}
-                      </p>
+                        {/* Governance */}
+                        <Card borderColor="border-purple-200" className="group">
+                            <div className="mb-6 flex justify-between items-start">
+                                <div className="bg-purple-100 p-4 rounded-2xl group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300">
+                                    <Scale size={32} className="text-purple-600 group-hover:text-white" />
+                                </div>
+                                <span className="text-6xl font-black text-purple-50 opacity-100 group-hover:text-purple-100 transition-colors">G</span>
+                            </div>
+                            <h4 className="font-['Playfair_Display'] text-2xl font-bold text-[#0E6175] mb-4">Governance</h4>
+                            <p className="font-['Inter'] text-gray-600 leading-relaxed">
+                                Ketelusan dalam laporan impak dan tadbir urus yang mengutamakan integriti serta akauntabiliti pihak berkepentingan.
+                            </p>
+                            <ul className="mt-6 space-y-2 font-['Inter'] text-sm text-purple-700">
+                                <li className="flex items-center gap-2">• Laporan Impak Telus</li>
+                                <li className="flex items-center gap-2">• Etika Perniagaan Tinggi</li>
+                            </ul>
+                        </Card>
                     </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                </div>
 
-        </div>
-      </section>
-  );
-}
+            </div>
+        </section>
+    );
+};

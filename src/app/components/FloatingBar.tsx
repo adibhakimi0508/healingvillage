@@ -1,4 +1,4 @@
-import { Instagram } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react'; // Added Facebook to imports
 import { useEffect, useState } from 'react';
 
 // 1. Custom WhatsApp Icon
@@ -25,7 +25,7 @@ export function FloatingBar() {
     useEffect(() => {
         const handleScroll = () => {
             // Logic: Show bar only when user has scrolled past the Hero section (roughly 1 viewport height)
-            const heroHeight = window.innerHeight * 0.8; // Trigger when 80% past the hero
+            const heroHeight = window.innerHeight * 0.8;
 
             if (window.scrollY > heroHeight) {
                 setIsVisible(true);
@@ -35,7 +35,6 @@ export function FloatingBar() {
         };
 
         window.addEventListener('scroll', handleScroll);
-        // Initial check in case of reload
         handleScroll();
 
         return () => window.removeEventListener('scroll', handleScroll);
@@ -57,6 +56,18 @@ export function FloatingBar() {
                 aria-label="WhatsApp"
             >
                 <WhatsAppIcon />
+            </a>
+
+            {/* Facebook (NEW) */}
+            <a
+                href="https://www.facebook.com/share/1DUDBfLx8U/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-14 h-14 bg-[#1877F2] text-white rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 group active:scale-95"
+                style={{ boxShadow: '0 4px 20px rgba(24, 119, 242, 0.3)' }}
+                aria-label="Facebook"
+            >
+                <Facebook className="w-7 h-7" />
             </a>
 
             {/* Instagram */}

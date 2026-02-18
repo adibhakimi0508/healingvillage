@@ -106,20 +106,6 @@ const existingData: GalleryItem[] = [
         "timestamp": 1759363200000
     },
     {
-        "file": "korporat8.jpg",
-        "title": "Nafas Tenang x OCBC x National Kidney Foundation",
-        "date": "2025-10-02",
-        "category": "korporat",
-        "timestamp": 1759363200000
-    },
-    {
-        "file": "korporat9.jpg",
-        "title": "Nafas Tenang x OCBC x National Kidney Foundation",
-        "date": "2025-10-02",
-        "category": "korporat",
-        "timestamp": 1759363200000
-    },
-    {
         "file": "korporat9.jpg",
         "title": "Nafas Tenang x OCBC x National Kidney Foundation",
         "date": "2025-09-24",
